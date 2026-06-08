@@ -46,6 +46,20 @@ An interactive AR game where falling targets can be destroyed by tracking your i
 - **Responsive Sizing:** The window opens in your screen's native resolution. Press **`F`** to toggle fullscreen mode.
 - **Reliable Hand Tracking:** MediaPipe processes hand tracking on the raw unwarped frame and projects the coordinates, preventing tracking failures from warped image distortion.
 
+## 3. Sensorfusion (`sensor_fusion.py`)
+
+An application that tracks a smartphone using camera vision and fuses it with accelerometer data via a complementary filter to provide smooth tracking.
+
+### Controls and Features
+- **ArUco Markers:** Set up with the default classroom `DICT_6X6_250` dictionary. Hold 4 markers in view of the camera to define the tracking area.
+- **Dynamic Warping:** Once all 4 markers are detected, the board area is warped to the screen.
+- **Visual Outlines:** If markers are partially detected (fewer than 4), boundary outlines highlight them.
+- **Smartphone Tracking:** Uses ArUco ID `5` or `23` to track a smartphone's position (indicated by a red dot).
+- **Sensor Fusion (Complementary Filter):** Fuses the smartphone's accelerometer data (received via DIPPID) with the camera tracking to predict and smooth movement (indicated by a green dot).
+- **Alpha Adjustment:** Press the **`UP`** and **`DOWN`** arrow keys to adjust the Alpha value of the complementary filter, balancing between camera and accelerometer data.
+- **Reset Position:** Press **Button 1** on the DIPPID app to reset the fused prediction position back to the raw camera position.
+- **Quit:** Press **`Q`** to safely close the application.
+
 ## Credits
 - Gemini for formatting, sort of proofreading this README and debugging
 - OpenCV Documentation
